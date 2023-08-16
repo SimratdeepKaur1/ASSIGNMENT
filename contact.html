@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="contact-styles.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="css/slick.min.js"></script>
+  <script type="text/javascript">
+    // Regular expression and validation logic for email
+    function isValidEmail(email) {
+      const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+      return emailPattern.test(email);
+    }
+
+    // Regular expression and validation logic for date (dd/mm/yy format)
+    function isValidDate(date) {
+      const datePattern = /^\d{2}\/\d{2}\/\d{2}$/;
+
+      if (!datePattern.test(date)) {
+        return false; // Date format is incorrect
+      }
+
+      const [day, month, year] = date.split('/').map(Number);
+
+      const isValidDay = day >= 1 && day <= 31;
+      const isValidMonth = month >= 1 && month <= 12;
+      const isValidYear = year >= 0 && year <= 99;
+
+      return isValidDay && isValidMonth && isValidYear;
+    }
+    function isValidPhone(phone) {
+      const phonePattern = /^\d{10}$/;
+      return phonePattern.test(phone);
+    }
+  </script>
+  <script src="script.js"></script>
+  <title>Contact Us</title>
+</head>
+<body>
+  <header class="header contact-header">
+    <h1>Contact Us</h1>
+  </header>
+
+  <main>
+    <form id="contactForm" class="contact-form" action="https://formspree.io/f/mbjvgape" method="POST">
+ 
+      <div>
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="firstName" required>
+        <span class="contact-error" id="firstNameError"></span>
+      </div>
+      <div>
+        <label for="lastName" class="contact-heading">Last Name:</label>
+        <input type="text" id="lastName" name="lastName" class="contact-input" required>
+        <span class="contact-error" id="lastNameError"></span>
+      </div>
+      <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <span class="contact-error" id="emailError"></span>
+      </div>
+      <div>
+        <label for="date">Date (dd/mm/yy):</label>
+        <input type="text" id="date" name="date" placeholder="dd/mm/yy" required>
+        <span class="contact-error" id="dateError"></span>
+      </div>
+      <div>
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" name="phone" required>
+        <span class="contact-error" id="phoneError"></span>
+      </div>
+      <div>
+        <label for="message" class="contact-heading">Message:</label>
+        <textarea id="message" name="message" rows="4" class="contact-textarea" required></textarea>
+        <span class="contact-error" id="messageError"></span>
+      </div>
+      <div>
+        <button type="submit" class="submit-button">Submit</button>
+      </div>
+    </form>
+  </main>
+</body>
+</html>

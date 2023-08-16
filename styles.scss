@@ -1,0 +1,21 @@
+/* styles.scss */
+header.menu {
+  color: yellow;
+  &:hover {
+    color: white;
+  }
+}
+
+button {
+  background-color: red;
+  color: white;
+}
+
+form#contactForm {
+  border: 1px dashed black;
+}
+
+button::after {
+  content: attr(data-text);
+  text-transform: uppercase;
+}
